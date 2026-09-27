@@ -8,6 +8,16 @@ on:
         required: false
         type: boolean
         default: false
+      bot3_selection:
+        description: 'Use bot3?'
+        required: false
+        type: boolean
+        default: false
+      bot4_selection:
+        description: 'Use bot4?'
+        required: false
+        type: boolean
+        default: false
         
 env:
   PASS: ${{ secrets.FP }}
@@ -43,14 +53,20 @@ jobs:
           echo 'Download successful'
           7z x mine-friend.7z -p"$PASS" -y > /dev/null 2>&1
           
-      - name: Configure Bot 2 credentials
-        if: ${{ inputs.bot_selection }}
+      - name: Configure bot credentials
         working-directory: mine-friend
         run: |
-          if [ -f user2_credentials.json ]; then
+          if [ "${{ inputs.bot4_selection }}" = "true" ]; then
+            echo "Using bot4 credentials"
+            mv user4_credentials.json credentials.json
+          elif [ "${{ inputs.bot3_selection }}" = "true" ]; then
+            echo "Using bot3 credentials"
+            mv user3_credentials.json credentials.json
+          elif [ "${{ inputs.bot_selection }}" = "true" ]; then
+            echo "Using bot2 credentials"
             mv user2_credentials.json credentials.json
           else
-            echo "user2_credentials.json not found; skipping"
+            echo "Using default credentials.json (bot1)"
           fi
           
       - name: Run and keep alive (5h 45m)
