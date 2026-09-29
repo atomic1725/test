@@ -18,6 +18,11 @@ on:
         required: false
         type: boolean
         default: false
+      bot5_selection:
+        description: 'Use bot5?'
+        required: false
+        type: boolean
+        default: false
         
 env:
   PASS: ${{ secrets.FP }}
@@ -65,6 +70,9 @@ jobs:
           elif [ "${{ inputs.bot_selection }}" = "true" ]; then
             echo "Using bot2 credentials"
             mv user2_credentials.json credentials.json
+          elif [ "${{ inputs.bot5_selection }}" = "true" ]; then
+            echo "Using bot5 credentials"
+            mv user5_credentials.json credentials.json
           else
             echo "Using default credentials.json (bot1)"
           fi
