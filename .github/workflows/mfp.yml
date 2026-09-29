@@ -84,5 +84,6 @@ jobs:
           npm i vec3 > /dev/null 2>&1 
           nohup node index.js > /tmp/mine-friend.log 2>&1 &
           sleep 7
+          node mf.js health | grep -i Hub || echo "Bot login failed" 
           node mf.js call ensureSkyblock > /dev/null 2>&1
           node farm-loop.js --iterations 12 2>&1
