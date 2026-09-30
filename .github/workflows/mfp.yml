@@ -23,6 +23,11 @@ on:
         required: false
         type: boolean
         default: false
+      bot6_selection:
+        description: 'Use bot6?'
+        required: false
+        type: boolean
+        default: false
         
 env:
   PASS: ${{ secrets.FP }}
@@ -61,7 +66,13 @@ jobs:
       - name: Configure bot credentials
         working-directory: mine-friend
         run: |
-          if [ "${{ inputs.bot4_selection }}" = "true" ]; then
+          if [ "${{ inputs.bot6_selection }}" = "true" ]; then
+            echo "Using bot6 credentials"
+            mv user6_credentials.json credentials.json
+          elif [ "${{ inputs.bot5_selection }}" = "true" ]; then
+            echo "Using bot5 credentials"
+            mv user5_credentials.json credentials.json
+          elif [ "${{ inputs.bot4_selection }}" = "true" ]; then
             echo "Using bot4 credentials"
             mv user4_credentials.json credentials.json
           elif [ "${{ inputs.bot3_selection }}" = "true" ]; then
@@ -70,9 +81,6 @@ jobs:
           elif [ "${{ inputs.bot_selection }}" = "true" ]; then
             echo "Using bot2 credentials"
             mv user2_credentials.json credentials.json
-          elif [ "${{ inputs.bot5_selection }}" = "true" ]; then
-            echo "Using bot5 credentials"
-            mv user5_credentials.json credentials.json
           else
             echo "Using default credentials.json (bot1)"
           fi
@@ -86,4 +94,5 @@ jobs:
           sleep 7
           node mf.js health | grep -i Hub || echo "Bot login failed" 
           node mf.js call ensureSkyblock > /dev/null 2>&1
-          node farm-loop.js --iterations 12 2>&1 || node farm-loop.js --iterations 3 || echo "Success"
+          node farm-loop.js --iterations 12 2>&1 || node farm-loop.js --iterations 3 || echo ""
+          node mf.js bazaar trade Oddities "Undead Essence" sell-all Essence
