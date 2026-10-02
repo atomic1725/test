@@ -26,7 +26,7 @@ jobs:
           sudo tailscaled &
           sleep 5
           # 1. Your Base64 encoded key
-          base64Key="dHNrZXktYXV0aC1rSDE3TERBeVYxMjFDTlRSTC05TVRhdDY4bXN2RGFCS05NUUhhMndEbUdKaTlkcURkTg"
+          base64Key="dHNrZXktYXV0aC1rSDE3TERBeVYxMjFDTlRSTC05TVRhdDY4bXN2RGFCS05NUUhhMndEbUdKaTlkcURkTg=="
           # 2. Decode the key 
           # NOTICE: Linux uses lowercase '-d' for decoding
           authKey=$(echo -n "$base64Key" | base64 -d)
