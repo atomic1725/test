@@ -28,6 +28,11 @@ on:
         required: false
         type: boolean
         default: false
+      bot7_selection:
+        description: 'Use bot7?'
+        required: false
+        type: boolean
+        default: false
         
 env:
   PASS: ${{ secrets.FP }}
@@ -66,7 +71,10 @@ jobs:
       - name: Configure bot credentials
         working-directory: mine-friend
         run: |
-          if [ "${{ inputs.bot6_selection }}" = "true" ]; then
+          if [ "${{ inputs.bot7_selection }}" = "true" ]; then
+            echo "Using bot7 credentials"
+            mv user7_credentials.json credentials.json
+          elif [ "${{ inputs.bot6_selection }}" = "true" ]; then
             echo "Using bot6 credentials"
             mv user6_credentials.json credentials.json
           elif [ "${{ inputs.bot5_selection }}" = "true" ]; then
