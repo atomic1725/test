@@ -4,37 +4,37 @@ on:
   workflow_dispatch:
     inputs:
       bot_selection:
-        description: 'Use bot2?'
+        description: 'Use FG6'
         required: false
         type: boolean
         default: false
       bot3_selection:
-        description: 'Use bot3?'
+        description: 'Use AS9'
         required: false
         type: boolean
         default: false
       bot4_selection:
-        description: 'Use bot4?'
+        description: 'Use ATB'
         required: false
         type: boolean
         default: false
       bot5_selection:
-        description: 'Use bot5?'
+        description: 'Use Fuo'
         required: false
         type: boolean
         default: false
       bot6_selection:
-        description: 'Use bot6?'
+        description: 'Use Suo'
         required: false
         type: boolean
         default: false
       bot7_selection:
-        description: 'Use bot7?'
+        description: 'Use Stn?'
         required: false
         type: boolean
         default: false
       bot8_selection:
-        description: 'Use bot8?'
+        description: 'Use NT7?'
         required: false
         type: boolean
         default: false
