@@ -110,5 +110,5 @@ jobs:
           sleep 7
           node mf.js health | grep -i Hub || echo "Bot login failed" 
           node mf.js call ensureSkyblock > /dev/null 2>&1
-          node farm-loop.js --iterations 12 2>&1 || node farm-loop.js --iterations 3 || echo ""
+          node farm-loop.js --iterations 15 2>&1 || echo ""
           node mf.js bazaar trade Oddities "Undead Essence" sell-all Essence
