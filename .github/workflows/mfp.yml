@@ -29,12 +29,12 @@ on:
         type: boolean
         default: false
       bot7_selection:
-        description: 'Use Stn?'
+        description: 'Use Stn'
         required: false
         type: boolean
         default: false
       bot8_selection:
-        description: 'Use NT7?'
+        description: 'Use NT8'
         required: false
         type: boolean
         default: false
@@ -107,8 +107,8 @@ jobs:
           npm i > /dev/null 2>&1
           npm i vec3 > /dev/null 2>&1 
           nohup node index.js > /tmp/mine-friend.log 2>&1 &
-          sleep 7
-          node mf.js health | grep -i Hub || echo "Bot login failed" 
+          sleep 10
+          node mf.js health
           node mf.js call ensureSkyblock > /dev/null 2>&1
           node farm-loop.js --iterations 15 2>&1 || echo ""
           node mf.js bazaar trade Oddities "Undead Essence" sell-all Essence
