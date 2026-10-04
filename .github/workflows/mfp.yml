@@ -111,4 +111,4 @@ jobs:
           node mf.js call ensureSkyblock > /dev/null 2>&1
           node mf.js whereami | grep -i hub
           node farm-loop.js --iterations 15 2>&1 || echo ""
-          #node mf.js bazaar trade Oddities "Undead Essence" sell-all Essence
+          node mf.js bazaar trade Oddities "Undead Essence" sell-all Essence
