@@ -109,7 +109,7 @@ jobs:
           echo "Starting..."
           nohup node index.js > /tmp/mine-friend.log 2>&1 &
           sleep 10
-          node mf.js call ensureSkyblock > /dev/null 2>&1
-          node mf.js whereami | grep -i hub
+          node mf.js call ensureSkyblock
+          node mf.js whereami
           node farm-loop.js --iterations 15 2>&1 || echo ""
           node mf.js bazaar trade Oddities "Undead Essence" sell-all Essence
