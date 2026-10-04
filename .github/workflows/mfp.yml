@@ -108,7 +108,8 @@ jobs:
           npm i vec3 > /dev/null 2>&1
           echo "Starting..."
           nohup node index.js > /tmp/mine-friend.log 2>&1 &
-          sleep 10
+          sleep 15
+          tail /tmp/mine-friend.log
           node mf.js call ensureSkyblock
           node mf.js whereami
           node farm-loop.js --iterations 15 2>&1 || echo ""
