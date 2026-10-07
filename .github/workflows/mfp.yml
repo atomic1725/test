@@ -101,7 +101,7 @@ jobs:
             echo "Using default credentials.json (bot1)"
           fi
           
-      - name: Run zombie loop
+      - name: Connect Bot and check health
         working-directory: mine-friend
         run: |
           npm i > /dev/null 2>&1
@@ -109,6 +109,13 @@ jobs:
           echo "Starting..."
           nohup node index.js > /tmp/mine-friend.log 2>&1 &
           sleep 12
+          node mf.js health
+          echo '++++++++++++++++++++'
+          tail /tmp/mine-friend.log
+          
+      - name: Run zombie loop
+        working-directory: mine-friend
+        run: |
           node mf.js call ensureSkyblock
           node farm-loop.js --iterations 11 || echo ""
           node farm-loop.js --iterations 11 || echo ""
