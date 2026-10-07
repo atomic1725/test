@@ -78,26 +78,27 @@ jobs:
         run: |
           if [ "${{ inputs.bot8_selection }}" = "true" ]; then
             echo "Using bot8 credentials"
-            mv user7_credentials.json credentials.json
+            mv credentials/user8_credentials.json credentials.json
           elif [ "${{ inputs.bot7_selection }}" = "true" ]; then
             echo "Using bot7 credentials"
-            mv user7_credentials.json credentials.json
+            mv credentials/user7_credentials.json credentials.json
           elif [ "${{ inputs.bot6_selection }}" = "true" ]; then
             echo "Using bot6 credentials"
-            mv user6_credentials.json credentials.json
+            mv credentials/user6_credentials.json credentials.json
           elif [ "${{ inputs.bot5_selection }}" = "true" ]; then
             echo "Using bot5 credentials"
-            mv user5_credentials.json credentials.json
+            mv credentials/user5_credentials.json credentials.json
           elif [ "${{ inputs.bot4_selection }}" = "true" ]; then
             echo "Using bot4 credentials"
-            mv user4_credentials.json credentials.json
+            mv credentials/user4_credentials.json credentials.json
           elif [ "${{ inputs.bot3_selection }}" = "true" ]; then
             echo "Using bot3 credentials"
-            mv user3_credentials.json credentials.json
+            mv credentials/user3_credentials.json credentials.json
           elif [ "${{ inputs.bot_selection }}" = "true" ]; then
             echo "Using bot2 credentials"
-            mv user2_credentials.json credentials.json
+            mv credentials/user2_credentials.json credentials.json
           else
+            mv credentials/credentials.json credentials.json
             echo "Using default credentials.json (bot1)"
           fi
           
