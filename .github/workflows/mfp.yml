@@ -113,5 +113,7 @@ jobs:
           node farm-loop.js --iterations 11 || echo ""
           
       - name: Run bone loop
+        working-directory: mine-friend
+        run: |
           node farm-loop-bone.js --iterations 11 || echo ""
           node mf.js bazaar trade Oddities "Undead Essence" sell-all Essence
