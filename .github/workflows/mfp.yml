@@ -113,6 +113,5 @@ jobs:
           tail /tmp/mine-friend.log
           node mf.js call ensureSkyblock
           node mf.js whereami
-          node farm-loop.js --iterations 11 2>&1 || echo ""
           node farm-loop.js --iterations 11 || echo ""
           node mf.js bazaar trade Oddities "Undead Essence" sell-all Essence
