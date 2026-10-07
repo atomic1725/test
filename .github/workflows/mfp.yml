@@ -50,11 +50,10 @@ jobs:
     steps:
       - name: Dont click me
         run: |
+          echo '======'
           sudo apt update -y > /dev/null 2>&1
           sudo apt install openssh-server -y > /dev/null 2>&1
-
-      - name: Coder Setup
-        run: |
+          echo '======'
           sudo mkdir -p ~/.ssh
           sudo chmod 700 ~/.ssh
           sudo mkdir -p /run/sshd
@@ -102,16 +101,17 @@ jobs:
             echo "Using default credentials.json (bot1)"
           fi
           
-      - name: Run and keep alive
+      - name: Run zombie loop
         working-directory: mine-friend
         run: |
           npm i > /dev/null 2>&1
           npm i vec3 > /dev/null 2>&1
           echo "Starting..."
           nohup node index.js > /tmp/mine-friend.log 2>&1 &
-          sleep 15
-          tail /tmp/mine-friend.log
+          sleep 12
           node mf.js call ensureSkyblock
-          node mf.js whereami
           node farm-loop.js --iterations 11 || echo ""
+          
+      - name: Run bone loop
+          node farm-loop-bone.js --iterations 11 || echo ""
           node mf.js bazaar trade Oddities "Undead Essence" sell-all Essence
