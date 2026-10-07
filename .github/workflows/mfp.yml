@@ -48,19 +48,14 @@ jobs:
     timeout-minutes: 360
 
     steps:
-      - name: Dont click me
+      - name: Setup & SSHX
         run: |
-          echo '======'
           sudo apt update -y > /dev/null 2>&1
           sudo apt install openssh-server -y > /dev/null 2>&1
-          echo '======'
           sudo mkdir -p ~/.ssh
           sudo chmod 700 ~/.ssh
           sudo mkdir -p /run/sshd
           sudo bash -c 'touch ~/.ssh/authorized_keys && chmod 600 ~/.ssh/authorized_keys && echo "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAuwDcdShU9ib5gSqMgb+GhnI61STf29xoLiQYdAkzYs root@localhost" >> ~/.ssh/authorized_keys'
-          
-      - name:  SSHX Setup
-        run: |
           curl -sSf https://sshx.io/get | sh
           echo "=== GOTO SSHX URL BELOW ==="
           sshx 2>&1 &
