@@ -112,15 +112,16 @@ jobs:
         working-directory: mine-friend
         run: |
           node mf.js call ensureSkyblock
-          node farm-loop.js --iterations 11 || echo ""
-          node farm-loop.js --iterations 11 || echo ""
-          node farm-loop.js --iterations 11 || echo ""
-          node farm-loop.js --iterations 11 || echo ""
+          node farm-loop.js --iterations 11 || sleep 5
+          node farm-loop.js --iterations 11 || sleep 5
+          node farm-loop.js --iterations 11 || sleep 5
+          node farm-loop.js --iterations 11 || sleep 5
           
       - name: Run bone loop
         working-directory: mine-friend
         run: |
-          node farm-loop-bone.js --iterations 11 || echo ""
-          node farm-loop-bone.js --iterations 11 || echo ""
-          node farm-loop-bone.js --iterations 11 || echo ""
+          node farm-loop-bone.js --iterations 11 || sleep 5
+          node farm-loop-bone.js --iterations 11 || sleep 5
+          node farm-loop-bone.js --iterations 11 || sleep 5
+          node farm-loop-bone.js --iterations 11 || sleep 5
           node mf.js bazaar trade Oddities "Undead Essence" sell-all Essence || node mf.js bazaar trade Oddities "Undead Essence" sell-all Essence || echo ""
