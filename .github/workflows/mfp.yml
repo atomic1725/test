@@ -117,5 +117,6 @@ jobs:
       - name: Run bone loop
         working-directory: mine-friend
         run: |
+          sleep 3600
           #node farm-loop-bone.js --iterations 11 || sleep 5 && node farm-loop-bone.js --iterations 11 || sleep 5 && node farm-loop-bone.js --iterations 11 || sleep 5 && node farm-loop-bone.js --iterations 11 || sleep 5
           #node mf.js bazaar trade Oddities "Undead Essence" sell-all Essence || node mf.js bazaar trade Oddities "Undead Essence" sell-all Essence || echo ""
