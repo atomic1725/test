@@ -104,9 +104,8 @@ jobs:
           echo "Starting..."
           nohup node index.js > /tmp/mine-friend.log 2>&1 &
           sleep 12
-          node mf.js health
           echo '++++++++++++++++++++'
-          tail /tmp/mine-friend.log
+          cat /tmp/mine-friend.log
           
       - name: Run zombie loop
         working-directory: mine-friend
