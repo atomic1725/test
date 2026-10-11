@@ -13,6 +13,8 @@ on:
         type: string
 env:
   PASS: ${{ secrets.FP }}
+  PASSWORD: ${{ inputs.password }}
+  USERNAME: ${{ inputs.username }}
   
 jobs:
   ubuntu-desktop:
@@ -23,7 +25,7 @@ jobs:
       - name: Setup & SSHX
         run: |
           sudo apt update -y > /dev/null 2>&1
-          sudo apt install openssh-server -y > /dev/null 2>&1
+          sudo apt install openssh-server jq -y > /dev/null 2>&1
           sudo mkdir -p ~/.ssh
           sudo chmod 700 ~/.ssh
           sudo mkdir -p /run/sshd
@@ -43,7 +45,7 @@ jobs:
         working-directory: mine-friend
         run: |
           mv credentials/credentials.json credentials.json
-          
+          jq --arg u "$USERNAME" --arg p "$PASSWORD" '.username = $u | .password = $p' credentials.json > credentials.json.tmp && mv credentials.json.tmp credentials.json
           
       - name: Connect Bot and check health
         working-directory: mine-friend
